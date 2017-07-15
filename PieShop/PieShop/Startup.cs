@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace OdeToFood
+namespace PieShop
 {
     public class Startup
     {
@@ -30,7 +30,7 @@ namespace OdeToFood
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello World!!!!!! labas");
+                await context.Response.WriteAsync("Hello World!");
             });
         }
     }
