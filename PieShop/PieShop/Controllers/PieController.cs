@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PieShop.Models;
+using PieShop.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,9 +20,14 @@ namespace PieShop.Controllers
             _pieRepository = pieRepository;
             _categoryRepository = categoryRepository;
         }
+
         public ViewResult List()
         {
-            return View(_pieRepository.Pies);
+            PiesListViewModel piesListViewModel = new PiesListViewModel {
+                                                                            Pies = _pieRepository.Pies,
+                                                                            CurrentCategory = "Cheese cakes"
+                                                                        };
+            return View(piesListViewModel);
         }
     }
 }
