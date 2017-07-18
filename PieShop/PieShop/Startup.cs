@@ -32,7 +32,7 @@ namespace PieShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options =>
-                                                options.UseSqlServer(_configurationRoot.GetConnectionString("DefaulConnection")));
+                                                options.UseSqlServer(_configurationRoot.GetConnectionString("DefaultConnection")));
             //Whenever method asks for this interface, such an implementation will be supplied.
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IPieRepository, PieRepository>();
@@ -53,6 +53,7 @@ namespace PieShop
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
+            DbInitializer.Seed(app);
 
             app.Run(async (context) =>
             {
