@@ -1,0 +1,5 @@
+﻿When adding a new class, how to migrate?
+- go to nuget package manager and call:
+Add-Migration <className>
+Update-Database
+
