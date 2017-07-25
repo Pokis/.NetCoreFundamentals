@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using PieShop.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace PieShop
 {
@@ -33,6 +34,10 @@ namespace PieShop
         {
             services.AddDbContext<AppDbContext>(options =>
                                                 options.UseSqlServer(_configurationRoot.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
+
             //Whenever method asks for this interface, such an implementation will be supplied.
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IPieRepository, PieRepository>();
@@ -59,6 +64,7 @@ namespace PieShop
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
+            app.UseIdentity();
             //app.UseMvcWithDefaultRoute();
 
             app.UseMvc(routes => 
