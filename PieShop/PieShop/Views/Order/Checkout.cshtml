@@ -9,6 +9,13 @@
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="form-group">
+        <label asp-for="LastName" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="LastName" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
         <label asp-for="FirstName" class="col-md-2 control-label"></label>
         <div class="col-md-5">
             <input asp-for="FirstName" class="form-control" />
@@ -77,6 +84,12 @@
         <div class="col-md-5">
             <input asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" class="btn btn-primary" value="Complete order" />
         </div>
     </div>
 
