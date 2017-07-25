@@ -79,7 +79,10 @@ namespace PieShop.Controllers
                 {
                     return RedirectToAction("Index", "Home");
                 }
-                ModelState.AddModelError("", result.Errors.ToString());
+                string error = "";
+                foreach (var err in result.Errors)
+                    error += err.Description;
+                ModelState.AddModelError("", error);
             }
             
             return View(loginViewModel);
